@@ -1,5 +1,4 @@
 import { homedir } from 'node:os';
-import { writeFileSync } from 'node:fs';
 import { Agent } from 'node:https';
 import { request } from 'node:https';
 async function saveBalance(balance){
@@ -22,8 +21,13 @@ async function saveBalance(balance){
         responsedata += chunk;
       });
       serverresponse.on('end', () => {
-        console.log("1: "+responsedata);
-        const responseobject = JSON.parse(responsedata.toString());
+        let responseobject;
+        try{
+          responseobject = JSON.parse(responsedata.toString());
+        } catch(e) {
+          console.log("Webserver returned missmatched JSON data");
+          responseobject = responsedata;
+        }
         resolve(responseobject);
       });
       serverrequest.on('error', (e) => {
