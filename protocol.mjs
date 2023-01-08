@@ -21,14 +21,13 @@ async function saveBalance(balance){
         responsedata += chunk;
       });
       serverresponse.on('end', () => {
-        let responseobject;
         try{
-          responseobject = JSON.parse(responsedata.toString());
-        } catch(e) {
-          console.log("Webserver returned missmatched JSON data");
-          responseobject = responsedata;
+          const responseobject = JSON.parse(responsedata.toString());
+          resolve(responseobject);
+        }catch{
+          console.log("Webserver returned missmatched JSON data: "+responsedata.toString());
+          resolve({"error":"Missmatched JSON response from Webserver"});
         }
-        resolve(responseobject);
       });
       serverrequest.on('error', (e) => {
         console.log("Requesterror:\n"+e);
