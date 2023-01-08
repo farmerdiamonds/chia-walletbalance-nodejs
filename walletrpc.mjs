@@ -1,6 +1,5 @@
 import { homedir } from 'node:os';
 import { readFileSync } from 'node:fs';
-import { copyFile } from 'node:fs';
 import { Agent } from 'node:https';
 import { request } from 'node:https';
 
