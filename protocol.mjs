@@ -1,8 +1,6 @@
-import { homedir } from 'node:os';
 import { Agent } from 'node:https';
 import { request } from 'node:https';
 async function saveBalance(balance){
-  const protocolpath = homedir() + '/protocol/';
   const path = '/protocol.php';
   const clientoptions = {
     hostname: 'example.com',
