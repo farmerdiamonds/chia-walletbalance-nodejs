@@ -1,5 +1,5 @@
 {
-  "name": "chia-walletbalance-nodejs",
+  "name": "chia-walletbalance-probe",
   "version": "1.0.0",
   "type": "module",
   "description": "Chia wallet balance checker",
@@ -7,6 +7,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Farmer Diamonds - IT Service Provider GmbH",
   "license": "MIT"
 }
